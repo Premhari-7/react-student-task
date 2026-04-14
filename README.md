@@ -7,19 +7,19 @@ This project was developed as part of the Full Stack Development with AI Bootcam
 
 ## Features Implemented
 
-### 1. Component
+### Component
 A reusable component named StudentCard was created to display student details such as name, course, and status.
 
-### 2. Props
+### Props
 Data is passed from the parent component (App.jsx) to the child component (StudentCard.jsx) using props.
 
-### 3. State (useState)
+### State (useState)
 An input field is created and its value is managed using the useState hook.
 
-### 4. Event Handling
+### Event Handling
 A button is implemented to display the entered input value using alert and console log when clicked.
 
-### 5. Form UI
+### Form UI
 A simple form is created with two input fields:
 - Name
 - Course
@@ -33,16 +33,6 @@ The form handles user input and clears the fields after submission.
 - React (Vite)
 - JavaScript (ES6)
 - CSS
-
----
-
-## Project Structure
-src/
-├── components/
-│ ├── StudentCard.jsx
-│ └── StudentCard.css
-├── App.jsx
-├── App.css
 
 ---
 
@@ -62,17 +52,18 @@ npm run dev
 
 http://localhost:5173
 
---
+
+---
 
 ## Screenshot
 
-![Project Screenshot](./images/screenshot.png)
+![Project Screenshot](./images/Screenshot%202026-04-14%20151357.png)
 
 ---
 
 ## Author
 
-Prem Hari S
+Prem Hari
 
 ---
 
