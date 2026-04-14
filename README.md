@@ -1,4 +1,4 @@
-# React Bootcamp Day 1 Task
+# Fullstack Bootcamp Day 1 Task
 
 ## Project Overview
 This project was developed as part of the Full Stack Development with AI Bootcamp (Day 1). The objective of this task is to understand and implement the basic concepts of React such as components, props, state, event handling, and form handling.
@@ -55,15 +55,15 @@ http://localhost:5173
 
 ---
 
-## Screenshot
+## Author
 
-![Project Screenshot](./images/Screenshot%202026-04-14%20151357.png)
+Prem Hari S
 
 ---
 
-## Author
+## Notes
 
-Prem Hari
+This README has been updated to provide a clear and professional overview of the Day 1 task implementation.
 
 ---
 
