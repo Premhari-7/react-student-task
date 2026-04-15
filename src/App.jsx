@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import StudentCard from "./components/StudentCard";
 
@@ -7,80 +7,109 @@ function App() {
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
 
-  // Exercise 4 (Event Handling + Console Log)
+  const [students, setStudents] = useState([
+    { id: 1, name: "Prem", course: "React" },
+    { id: 2, name: "Hari", course: "Java" },
+    { id: 3, name: "Maruthu", course: "Python" },
+    { id: 4, name: "Maari", course: "C++" },
+    { id: 5, name: "Sasoori", course: "JavaScript" }
+  ]);
+
+  const [users, setUsers] = useState([]);
+
   const handleClick = () => {
-    console.log("Input Value:", inputValue);
     alert(inputValue);
   };
 
-  // Exercise 5 (Form + Console Log + Clear Fields)
   const handleSubmit = () => {
-    console.log("Name:", name);
-    console.log("Course:", course);
+    if (!name || !course) {
+      alert("Enter name and course");
+      return;
+    }
 
-    alert(`Name: ${name} | Course: ${course}`);
+    const newStudent = {
+      id: students.length + 1,
+      name,
+      course
+    };
 
-    // Clear input fields
+    setStudents([...students, newStudent]);
     setName("");
     setCourse("");
   };
 
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  }, []);
+
   return (
     <div className="container">
-      <h1>🎓 Student Dashboard</h1>
+      <h2>🎓 Student Dashboard</h2>
 
-      {/* Exercise 1 & 2 */}
       <StudentCard 
         name="Prem Hari"
         course="Full Stack Bootcamp"
         status="Active"
       />
 
-      {/* Exercise 3 & 4 */}
-      <div className="section">
-        <h3>Input Field</h3>
+      <div className="sections">
 
-        <input
-          type="text"
-          placeholder="Type something"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
+        {/* Input + Form */}
+        <div className="box">
+          <h4>Input & Form</h4>
 
-        <br /><br />
+          <input
+            type="text"
+            placeholder="Type something"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
 
-        <button onClick={handleClick}>
-          Show Input
-        </button>
-      </div>
+          <button onClick={handleClick}>Show</button>
 
-      <hr />
+          <hr />
 
-      {/* Exercise 5 */}
-      <div className="section">
-        <h3>Simple Form</h3>
+          <input
+            type="text"
+            placeholder="Enter Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="Enter Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Enter Course"
+            value={course}
+            onChange={(e) => setCourse(e.target.value)}
+          />
 
-        <br /><br />
+          <button onClick={handleSubmit}>Add Student</button>
+        </div>
 
-        <input
-          type="text"
-          placeholder="Enter Course"
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
-        />
+        {/* Students */}
+        <div className="box">
+          <h4>Students</h4>
 
-        <br /><br />
+          {students.map((s) => (
+            <div key={s.id} className="card">
+              {s.name} - {s.course}
+            </div>
+          ))}
+        </div>
 
-        <button onClick={handleSubmit}>
-          Submit Form
-        </button>
+        {/* API Users */}
+        <div className="box">
+          <h4>API Users</h4>
+
+          {users.map((u) => (
+            <div key={u.id} className="card">
+              {u.name}
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );
