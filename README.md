@@ -93,7 +93,7 @@ On Day 4, I integrated the frontend with backend APIs and implemented authentica
 ![Dashboard](./images/Dashboard.png)
 
 ### Login Functionality
-![Login](./images/Login check.png)
+![Login](./images/Login%20check.png)
 
 ### JWT Authentication (Protected Route)
 ![JWT](./images/JWT.png)
@@ -119,13 +119,12 @@ On Day 4, I integrated the frontend with backend APIs and implemented authentica
 ## How to Run
 
 ### Frontend
-
-
+ 
 npm run dev  
 
 ### Backend
 
-cd backend  
+cd backend   
 node server.js  
 
 ---
@@ -138,4 +137,4 @@ Prem Hari S
 
 ## Conclusion
 
-This project demonstrates the complete full-stack development workflow including frontend UI, backend API creation, database integration, and authentication using JWT. It reflects real-world application architecture and secure data handling.
+This project demonstrates the complete full-stack development workflow including frontend UI, backend API creation, database integration, and authentication using JWT.
