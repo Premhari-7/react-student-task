@@ -93,7 +93,7 @@ On Day 4, I integrated the frontend with backend APIs and implemented authentica
 ![Dashboard](./images/Dashboard.png)
 
 ### Login Functionality
-![Login](./images/Login.png)
+![Login](./images/Login check.png)
 
 ### JWT Authentication (Protected Route)
 ![JWT](./images/JWT.png)
