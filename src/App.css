@@ -1,12 +1,12 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(to right, #0f172a, #1e293b);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
 }
 
-/* Main container */
+/* Container */
 .container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,59 +19,78 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Sections layout */
+/* Profile Card */
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  width: 250px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* Layout */
 .sections {
   display: flex;
-  gap: 20px;
+  gap: 25px;
 }
 
-/* Box style */
+/* Glass Box */
 .box {
   width: 280px;
-  height: 320px;
-  background: #1e293b;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  overflow-y: auto;
+  height: 340px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;   /* 🔥 FIX HERE */
 }
 
-/* Headings */
+/* Heading */
 .box h4 {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 /* Inputs */
 input {
   width: 100%;
-  padding: 8px;
-  border-radius: 6px;
+  padding: 10px;
+  border-radius: 8px;
   border: none;
   margin-bottom: 10px;
+  background: rgba(255,255,255,0.1);
+  color: white;
 }
 
 /* Buttons */
 button {
   width: 100%;
-  padding: 8px;
+  padding: 10px;
+  margin-bottom: 8px;
   border: none;
-  border-radius: 6px;
-  background: #38bdf8;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
   color: black;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 button:hover {
-  background: #0ea5e9;
+  transform: scale(1.05);
 }
 
-/* Cards */
-.card {
-  background: #334155;
-  padding: 8px;
-  margin: 8px 0;
-  border-radius: 6px;
+/* Student card */
+.student-card {
+  background: rgba(255,255,255,0.08);
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
   text-align: center;
 }

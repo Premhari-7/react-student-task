@@ -3,73 +3,113 @@ import "./App.css";
 import StudentCard from "./components/StudentCard";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
-
-  const [students, setStudents] = useState([
-    { id: 1, name: "Prem", course: "React" },
-    { id: 2, name: "Hari", course: "Java" },
-    { id: 3, name: "Maruthu", course: "Python" },
-    { id: 4, name: "Maari", course: "C++" },
-    { id: 5, name: "Sasoori", course: "JavaScript" }
-  ]);
-
+  const [students, setStudents] = useState([]);
   const [users, setUsers] = useState([]);
 
-  const handleClick = () => {
-    alert(inputValue);
+  /* ================= LOGIN ================= */
+  const handleLogin = async () => {
+    const res = await fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: "admin",
+        password: "1234"
+      })
+    });
+
+    const data = await res.json();
+    localStorage.setItem("token", data.token);
+    alert("Login successful");
   };
 
-  const handleSubmit = () => {
+  /* ================= PROTECTED ================= */
+  const getProfile = async () => {
+    const token = localStorage.getItem("token");
+
+    const res = await fetch("http://localhost:5000/profile", {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+
+    const data = await res.json();
+    alert(JSON.stringify(data));
+  };
+
+  /* ================= ADD ================= */
+  const handleSubmit = async () => {
     if (!name || !course) {
       alert("Enter name and course");
       return;
     }
 
-    const newStudent = {
-      id: students.length + 1,
-      name,
-      course
-    };
+    const res = await fetch("http://localhost:5000/students", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, course })
+    });
 
-    setStudents([...students, newStudent]);
+    const data = await res.json();
+    setStudents([...students, data]);
+
     setName("");
     setCourse("");
   };
 
+  /* ================= FETCH ================= */
   useEffect(() => {
+    fetch("http://localhost:5000/students")
+      .then(res => res.json())
+      .then(data => setStudents(data));
+
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(res => res.json())
       .then(data => setUsers(data));
   }, []);
 
+  /* ================= UPDATE ================= */
+  const updateStudent = async (id) => {
+    await fetch(`http://localhost:5000/students/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: "Updated Name"
+      })
+    });
+
+    alert("Updated");
+
+    const res = await fetch("http://localhost:5000/students");
+    const data = await res.json();
+    setStudents(data);
+  };
+
   return (
     <div className="container">
       <h2>🎓 Student Dashboard</h2>
 
-      <StudentCard 
-        name="Prem Hari"
-        course="Full Stack Bootcamp"
-        status="Active"
-      />
+      <div className="profile-card">
+        <h3>Prem Hari</h3>
+        <p>Full Stack Bootcamp</p>
+        <p>Active</p>
+      </div>
 
       <div className="sections">
 
-        {/* Input + Form */}
+        {/* LOGIN + FORM */}
         <div className="box">
-          <h4>Input & Form</h4>
+          <h4>Login & Form</h4>
 
-          <input
-            type="text"
-            placeholder="Type something"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-
-          <button onClick={handleClick}>Show</button>
-
-          <hr />
+          <button onClick={handleLogin}>Login</button>
+          <button onClick={getProfile}>Get Profile</button>
 
           <input
             type="text"
@@ -88,23 +128,26 @@ function App() {
           <button onClick={handleSubmit}>Add Student</button>
         </div>
 
-        {/* Students */}
+        {/* STUDENTS */}
         <div className="box">
           <h4>Students</h4>
 
           {students.map((s) => (
-            <div key={s.id} className="card">
+            <div key={s._id} className="student-card">
               {s.name} - {s.course}
+              <button onClick={() => updateStudent(s._id)}>
+                Update
+              </button>
             </div>
           ))}
         </div>
 
-        {/* API Users */}
+        {/* API USERS */}
         <div className="box">
           <h4>API Users</h4>
 
-          {users.map((u) => (
-            <div key={u.id} className="card">
+          {users.slice(0, 5).map((u) => (
+            <div key={u.id} className="student-card">
               {u.name}
             </div>
           ))}

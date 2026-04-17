@@ -1,7 +1,7 @@
-# Full Stack Bootcamp - Day 1, Day 2 & Day 3
+# Full Stack Bootcamp - Day 1, Day 2, Day 3 & Day 4
 
 ## Project Overview
-This project was developed as part of the Full Stack Development with AI Bootcamp. It covers frontend and backend development by building a complete full-stack application using React, Node.js, Express, and MongoDB.
+This project was developed as part of the Full Stack Development with AI Bootcamp. It covers frontend and backend development by building a complete full-stack application using React, Node.js, Express, MongoDB, and JWT authentication.
 
 ---
 
@@ -72,6 +72,34 @@ On Day 3, I built the backend and connected it with a database.
 
 ---
 
+## Day 4 - Full Stack Integration & Authentication
+
+On Day 4, I integrated the frontend with backend APIs and implemented authentication using JWT.
+
+### Concepts Covered
+- Connected frontend with backend APIs
+- Implemented Update API from UI to database
+- Created Login API using JWT authentication
+- Generated token on successful login
+- Stored token in localStorage
+- Accessed protected route using Bearer Token
+- Verified complete flow (Frontend → Backend → Database → UI)
+
+---
+
+## Day 4 Output
+
+### Dashboard
+![Dashboard](./images/Dashboard.png)
+
+### Login Functionality
+![Login](./images/Login.png)
+
+### JWT Authentication (Protected Route)
+![JWT](./images/JWT.png)
+
+---
+
 ## Technologies Used
 
 ### Frontend
@@ -84,6 +112,7 @@ On Day 3, I built the backend and connected it with a database.
 - Express.js
 - MongoDB
 - Mongoose
+- JSON Web Token (JWT)
 
 ---
 
@@ -91,16 +120,13 @@ On Day 3, I built the backend and connected it with a database.
 
 ### Frontend
 
-npm install
-npm run dev
 
+npm run dev  
 
 ### Backend
 
-cd backend
-npm install
-node server.js
-
+cd backend  
+node server.js  
 
 ---
 
@@ -112,4 +138,4 @@ Prem Hari S
 
 ## Conclusion
 
-This project demonstrates the complete journey from frontend development to backend implementation, including database integration and API testing. It provides a strong foundation for building real-world full-stack applications.
+This project demonstrates the complete full-stack development workflow including frontend UI, backend API creation, database integration, and authentication using JWT. It reflects real-world application architecture and secure data handling.
